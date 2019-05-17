@@ -7,29 +7,6 @@ import random
 # Load world
 world = World()
 
-
-
-
-
-
-
-#  when using bfs need to convert to n s e w directions when adding to record of rooms explored 
-# You may find the commands `player.currentRoom.id`, `player.currentRoom.getExits()` and `player.travel(direction)` useful.
-
-# class Queue():
-#     def __init__(self):
-#         self.queue=[]
-#     def enqueue(self, player):
-#         self.queue.append(player)
-#     def dequeue(self, player):
-#         if self.size() > 0:
-#             return self.queue.pop()
-#         else:
-#             return None
-#     def size(self):
-#         return len(self.queue)
-        
-    
 # # bfs skeleton
 #     def bfs(self, starting_vertex, destination_vertex):
 #         """
@@ -56,15 +33,55 @@ world.loadGraph(roomGraph)
 world.printRooms()
 player = Player("Name", world.startingRoom)
 
+class Queue():
+    def __init__(self):
+        self.queue=[]
+    def enqueue(self, player):
+        self.queue.append(player)
+    def dequeue(self, player):
+        if self.size() > 0:
+            return self.queue.pop()
+        else:
+            return None
+    def size(self):
+        return len(self.queue)
+
+    def main_direction(self, queue):
+        if "n" in direct:
+            return "n"
+        elif "e" in direct:
+            return "e"
+        elif "s" in direct:
+            return "s"
+        else:
+            return "w"
+    def opposite_direction(direction):
+        if direction == 'n':
+            return 's'
+        elif direction =='e':
+            return 'w'
+        elif direction == 's':
+            return 'n'
+        else direction == 'w':
+            return 'e'
+
 # FILL THIS IN
 traversalPath = ['n', 's']
 visited_graph = {}
 
-# if dead end then record room visited
+# # if dead end then record room visited
 # def directions(reoom, exits):
 #     for i in room:
 #         if room[direction] == "?":
 #             visited_graph.push()
+
+direct = []
+
+
+#  when using bfs need to convert to n s e w directions when adding to record of rooms explored 
+# You may find the commands `player.currentRoom.id`, `player.currentRoom.getExits()` and `player.travel(direction)` useful.
+
+    
 
 
 # TRAVERSAL TEST
