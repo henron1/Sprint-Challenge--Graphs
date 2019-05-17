@@ -55,22 +55,34 @@ class Queue():
             return "s"
         else:
             return "w"
-    def opposite_direction(direction):
+    def opposite_direction(self,direction):
         if direction == 'n':
             return 's'
         elif direction =='e':
             return 'w'
         elif direction == 's':
             return 'n'
-        else direction == 'w':
+        elif direction == 'w':
             return 'e'
 
 # FILL THIS IN
-traversalPath = ['n', 's']
-visited_graph = {}
+traversalPath = []
+oppositePath = []
+player_map = {}
+
+# create Player Instance
+player = Player("Player 1", world.startingRoom)
+# push the current room (0) to player_map dictionary
+current_room = player.currentRoom.id
+previous_room = player.currentRoom.id
+
+player_map[player.currentRoom.id] = {} #starting dictionary 
+# map the exits to the players' current room
+for e in player.currentRoom.getExits():
+    player_map[player.currentRoom.id][e] = '?'
 
 # # if dead end then record room visited
-# def directions(reoom, exits):
+# def directions(room, exits):
 #     for i in room:
 #         if room[direction] == "?":
 #             visited_graph.push()
